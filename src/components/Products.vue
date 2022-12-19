@@ -85,7 +85,7 @@ export default{
                 // setTimeout TAKE A CALLBACK AS AN ARGUMENT(DECLARING THE FUNCTION AS THE CALLBACK CREATES PROBLEMS, SO USE ARROW FUNCTION)
                 setTimeout(() => {
                     this.loadingItems = false
-                },0)
+                }, 1000)
     },
 
     methods:{
