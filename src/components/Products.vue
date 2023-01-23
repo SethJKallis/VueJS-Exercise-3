@@ -11,7 +11,8 @@
 <div class="card-body">
   <h5 class="card-title">{{ product.name }}</h5>
 <p class="card-text">R{{ product.price }}</p>
-<a href="#" class="btn btn-primary" v-on:click="purchaseBtn(product)">Purchase</a>
+<a href="#" class="btn btn-primary" v-on:click="purchaseBtn(product)" v-if="cart.includes(product.id)">Purchase</a>
+<!-- <a href="#" class="btn btn-primary">Purchased</a> -->
 </div>
 </div>
 </div>
@@ -20,6 +21,7 @@
 </template>
 
 <script>
+let cart = []
 let products = [{
     id: 1,
     name: "Assassin's Creed",
@@ -68,7 +70,7 @@ export default{
     data: function () {
         return{
             products: JSON.parse(localStorage.getItem('products')),
-            loadingItems: true
+            loadingItems: true,
         } 
     },
     
@@ -93,7 +95,9 @@ export default{
             this.loadingItems = !this.loadingItems
     },
     purchaseBtn(product){
-        alert(`You've Purchased ${product.name} for R${product.price}`)
+        alert(`You've Purchased ${product.name} for R${product.price}`);
+        cart.push(product.id)
+        console.log(cart)
     }
     } 
 }
